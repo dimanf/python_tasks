@@ -39,12 +39,13 @@ def simple(number):
 
 # # atm uses only 100, 50, 20, 10, 5 and 1 notes.
 def atm(summ):
+	bills = [100, 50, 20, 10, 5, 1]
 
-
-#print multipliers(12)
-
-#print equation(2, 19, 35) # 2x^2 + 19x + 35 = 0
-
-print simple(14)
-
-# print atm(287)
+	counts = []
+	while summ != 0:
+		for i in xrange(0, len(bills)):
+			if summ - bills[i] >= 0:
+				summ -= bills[i]
+				counts.append(bills[i])
+				print bills[i]
+				break
