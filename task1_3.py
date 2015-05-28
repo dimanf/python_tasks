@@ -42,8 +42,13 @@ def sorted_list(l, s):
 
 	return "Parametrs ont is a list or string"
 
-def five():
-	pass
+def two_lists(first_list, second_list, letter):
+	if isinstance(first_list and second_list, list):
+		first_list_index = first_list.index(letter)
+		second_list.insert(first_list_index, letter)
+		return second_list
+
+	return "Wrong parametrs"
 
 def six(string):
 	if isinstance(string, str):
@@ -63,6 +68,8 @@ def seven():
 
 # print last_char_sort(['dub', 'red', 'frutella', 'calc'])
 
-print sorted_list(['alisa', 'boris', 'clarc', 'roman'], 'anton')
+# print sorted_list(['alisa', 'boris', 'clarc', 'roman'], 'anton')
+
+print two_lists(['one', 'two', 'three', 'four', 'five'], ['one', 'two', 'four', 'five'], 'three')
 
 # print six("Git will default to the more conservative")
