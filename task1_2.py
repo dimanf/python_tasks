@@ -15,7 +15,7 @@ def palindrome(pali):
 def find_letter(where, letter):
     if isinstance(where, str) and isinstance(letter, str):
     	where = where.split()
-    	words_on_letter = [word for word in where if word[0].lower() == letter]
+    	words_on_letter = [word for word in where if word[0].lower() == letter.lower()]
     	return words_on_letter
 	return "Parametrs is not a string"
 
