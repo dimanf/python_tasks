@@ -59,8 +59,23 @@ def six(string):
 		return string_list
 	return "Parametr is not a string"
 
-def seven():
-	pass
+def seven(numbers_list):
+	if isinstance(numbers_list, (list, tuple)):
+		sequences_list, sequence = [], []
+
+		for number in numbers_list:
+			if not sequence:
+				sequence.append(number)
+			elif sequence[-1]+1 == number:
+				sequence.append(number)
+			else:
+				sequences_list.append(sequence)			
+				sequence = [number]
+
+		sequences_list.append(sequence)
+
+		return sequences_list
+	return "Parametr not list or tuple"
 
 # print equal_elements("Git will default to the more conservative Git will")
 
@@ -70,6 +85,8 @@ def seven():
 
 # print sorted_list(['alisa', 'boris', 'clarc', 'roman'], 'anton')
 
-print two_lists(['one', 'two', 'three', 'four', 'five'], ['one', 'two', 'four', 'five'], 'three')
+# print two_lists(['one', 'two', 'three', 'four', 'five'], ['one', 'two', 'four', 'five'], 'three')
 
 # print six("Git will default to the more conservative")
+
+print seven([1, 2, 3, 5, 7, 8, 9, 10, 11, 12])
