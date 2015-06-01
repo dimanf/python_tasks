@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import itertools
+import time
 
 def change_list(l):
 	if isinstance(l, list):
@@ -65,6 +66,65 @@ def itertools_groupby(l):
 		print ''
 	return "Parametr is not a list"
 
+# decorator: work tme of function
+def func_timer_decorator(func):
+	def wrapper():
+		func_start = time.time()
+		func()
+		func_stop = time.time()
+		print 'Worktime of function: %s' % (func_stop - func_start)
+		return func()
+
+	return wrapper
+
+@func_timer_decorator
+def time_of_function():
+	return "func_timer_decorator"
+
+
+# decorator: name of function befor start
+def name_of_func_decorator(func):
+	def wrapper():
+		print "Name of function is: '%s'" % func.func_name
+		return func()
+	return wrapper
+
+@name_of_func_decorator
+def my_name_is_first_function():
+	return "First function"
+
+# decorator: user check
+import getpass
+USER = 'another_user'
+
+def check_user_decorator(func):
+	def wrapper():
+		if getpass.getuser() != USER:
+			pass	
+		else:
+			return func()
+	return wrapper
+
+@check_user_decorator
+def user_check():
+	print "user check"
+
+# decorator: decorator with exception
+def decoartor_with_exception(func):
+	def wrapper():
+		if func() is True:
+			pass
+		else:
+			class CustomException(Exception):
+				def __init__(self, message, errors):
+					super(CustomException, self).__init__(message)
+			raise CustomException(func(), 200)
+	return wrapper			
+
+@decoartor_with_exception
+def exception_func():
+	return "string for check"
+
 # print change_list([1, 2, 3])
 
 # print change_list_by_if([1, 2, 3])
@@ -83,10 +143,18 @@ def itertools_groupby(l):
 
 # print itertools_dropwhile([1,4,6,4,1])
 
-print itertools_groupby([
-	("animal", "bear"), 
-	("animal", "duck"), 
-	("plant", "cactus"),
-	("vehicle", "speed boat"), 
-	("vehicle", "school bus")
-])
+# print itertools_groupby([
+# 	("animal", "bear"), 
+# 	("animal", "duck"), 
+# 	("plant", "cactus"),
+# 	("vehicle", "speed boat"), 
+# 	("vehicle", "school bus")
+# ])
+
+# print time_of_function()
+
+# print my_name_is_first_function()
+
+# print user_check()
+
+print exception_func()
