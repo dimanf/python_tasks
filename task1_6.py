@@ -66,6 +66,47 @@ def itertools_groupby(l):
 		print ''
 	return "Parametr is not a list"
 
+# 2.a
+
+def few_values():
+	first_value = 'first_value'
+	second_value = 'second_value'
+
+	return first_value, second_value
+
+# print few_values()
+
+# 2.b
+
+def generator(n):
+	for i in n: 
+		yield i*2
+
+# print generator(xrange(100))
+
+#2.c
+
+def lambda_function(n):
+	return map(lambda x: x * 2, n)
+
+# print lambda_function(xrange(100))
+
+def listgen_func(n):
+	return [i * 2 for i in n]
+
+print listgen_func(xrange(100))
+
+# *args, **kwargs, otional и named
+def args_func(*args):
+	return args
+
+print args_func(1, 2, 3)
+
+def kwargs_func(**kwargs):
+	return kwargs
+
+print kwargs_func(first_arg = 123, second_arg = 'second')
+
 # decorator: work tme of function
 def func_timer_decorator(func):
 	def wrapper():
@@ -151,10 +192,12 @@ def exception_func():
 # 	("vehicle", "school bus")
 # ])
 
+print 
+
 # print time_of_function()
 
 # print my_name_is_first_function()
 
 # print user_check()
 
-print exception_func()
+# print exception_func()
