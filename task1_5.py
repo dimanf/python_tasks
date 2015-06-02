@@ -3,7 +3,29 @@
 import argparse
 
 class CustomException(Exception):
-    pass
+	def __init__(self, message, errors):
+		super(CustomException, self).__init__(message)
+
+# raise CustomException('Custom xception', 500)
+
+def try_except_else_finally(file_path):
+	try:
+		f = open(file_path)
+
+		try:
+			for line in f:
+				print line
+		except Exception:
+			print('Что-то пошло не так:(')
+		else:
+			print('Файл успешно напечатан!')
+		finally:
+			f.close()
+			print('Файл закрыт!')
+	except (IOError, OSError) as e:
+		print('Файл не найден :(')
+
+print try_except_else_finally("task1_11.py")
 
 if __name__ == '__main__':
 	import os
