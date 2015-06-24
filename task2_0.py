@@ -68,7 +68,7 @@ class HtmlGenerator(object):
 	@classmethod
 	def open_file(cls, file_to_html):
 		with open(file_to_html, 'w') as html_file:
-			dom = cls.build_html(f)
+			dom = cls.build_html(html_file)
 			for line in dom:
 				html_file.write(line+"\n")
 				print line
